@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<script>
+    window.onload = function()
+    {
+        var oBtn1 = document.getElementById('btn1');
+        var oBtn2 = document.getElementById('btn2');
+        var oBtn3 = document.getElementById('btn3');
+        var oBtn4 = document.getElementById('btn4');
+        var timer = null;
+        var stop = null;
+
+        oBtn1.onclick = function()
+        {
+            timer = setInterval(function(){
+                alert('连续开启');
+            },1000);
+        };
+
+        oBtn2.onclick = function()
+        {
+            clearInterval(timer);
+        };
+
+        oBtn3.onclick = function()
+        {
+           stop = setTimeout(function()
+            {
+                alert('开启一次');
+            },1000);
+        };
+
+        oBtn4.onclick = function()
+        {
+            clearTimeout(stop);
+        };
+
+
+    };
+
+</script>
+<body>
+<input type="button" id="btn3" value="连续开启" />
+<input type="button" id="btn4" value="关闭" />
+<br>
+<br>
+<input type="button" id="btn1" value="开启一次" />
+<input type="button" id="btn2" value="关闭" />
+
+</body>
+</html>

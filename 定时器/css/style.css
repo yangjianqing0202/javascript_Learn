@@ -1,0 +1,6 @@
+html { margin:0; padding:0; height:100%; }
+body { margin:0; padding:0; height:100%; background:#003; }
+img { margin:0; padding:0; border:none;}
+
+.clock { width:520px; height:520px;  margin:160px auto 0;  text-align:center;}
+.date { margin:50px 0 30px 0; }

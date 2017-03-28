@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<script>
+    window.onload = function()
+    {
+        var oBtn1 = document.getElementById('switch');
+        var oBtn2 = document.getElementById('if');
+        var oBtn3 = document.getElementById('Trinity');
+        var name = "某某某";
+        var sex = "";
+        var num = 126;
+
+        oBtn1.onclick = function()
+        {
+            switch (sex)
+            {
+                case '男':
+                    alert(name+'先生你好');
+                    break;
+
+                case '女':
+                    alert(name+'女士你好');
+                    break;
+
+                default:
+                    alert('你好');
+            }
+        };
+
+        oBtn2.onclick = function()
+        {
+            if(sex=="男")
+            {
+                alert(name+'先生你好');
+            }
+            else if(sex=="女")
+            {
+                alert(name+'女士你好');
+            }
+            else
+            {
+                alert('你好');
+            }
+
+        };
+
+        oBtn3.onclick = function()
+        {
+            num%2==0?alert("双数"):alert("单数");
+        }
+
+
+    };
+
+</script>
+<body>
+<input type="button" value="switch" id="switch"/>
+<input type="button" value="if" id="if"/>
+<input type="button" value="三目运算" id="Trinity" />
+
+</body>
+</html>

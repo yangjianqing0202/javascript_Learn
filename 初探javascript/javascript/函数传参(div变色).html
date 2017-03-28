@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		#div1,#div2 {width:200px; height:200px; background:red;}
+		
+	</style>
+	<script>
+		
+		function setStyle(name,value)
+		{
+			var oDiv = document.getElementById('div2');
+			oDiv.style[name]=value;
+		}
+		
+		function setColor(color)
+		{
+			var oDiv = document.getElementById('div1');
+			oDiv.style.background = color;
+		}
+		
+		
+		
+		window.onload = function()
+		{
+			
+			var oSet = document.getElementById('togreen');
+			oSet.onclick= function()
+			{
+				setColor('green')
+			}
+			
+			var oSet = document.getElementById('toblue');
+			oSet.onclick= function()
+			{
+				setColor('blue')
+			}
+			
+			var oSet = document.getElementById('toyellow');
+			oSet.onclick= function()
+			{
+				setColor('yellow')
+			}
+			
+			var oSet = document.getElementById('towidth');
+			oSet.onclick= function()
+			{
+				setStyle('width','400px')
+			}
+			
+			var oSet = document.getElementById('toheight');
+			oSet.onclick= function()
+			{
+				setStyle('height','400px')
+			}
+			
+			var oSet = document.getElementById('toback');
+			oSet.onclick= function()
+			{
+				setStyle('background','black')
+			}
+			
+			
+			
+			var oRes = document.getElementById('restore');
+			oRes.onclick = function()
+			{
+				var oDiv = document.getElementById('div2');
+				oDiv.style.width='200px';
+				oDiv.style.height='200px';
+				oDiv.style.background='red';
+			};
+		};
+		
+		
+		
+	</script>
+
+	<body>
+		<input type="button" value="变绿" id="togreen" />
+		<input type="button" value="变蓝" id="toblue" />
+		<input type="button" value="变黄" id="toyellow" />
+		<div id="div1"></div>
+		<br />
+		<input type="button" value="变宽" id="towidth" />
+		<input type="button" value="变高" id="toheight" />
+		<input type="button" value="变黑" id="toback" />
+		<input type="button" value="还原" id="restore" />
+		<div id="div2"></div>
+	</body>
+</html>

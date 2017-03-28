@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<script>
+		window.onload = function()
+		{
+			var oBtn1 = document.getElementById('btn1');
+			var oBtn2 = document.getElementById('btn2');
+			oBtn1.onclick = function()
+			{
+				var a = [57,22,32,45,87,09,67,56];
+				var b = [17,25,32,544,56,97,76,132];
+				var c = b.concat(a);
+				c.sort(function(n1,n2)
+				{
+					return n1-n2;
+				});
+				alert(c);
+			};
+
+
+		};
+
+
+		
+	</script>
+	
+	<body>
+	<input type="button" id="btn1" value="排序" />
+	<input type="button" id="btn2" value="循环" />
+	<input type="button" id="btn3" value="josn" />
+	</body>
+</html>

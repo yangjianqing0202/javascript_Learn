@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		input { display:block;}
+		#div1 div { width:50px; height:50px; border:1px solid black; margin:5px; float:left; }
+	</style>
+	<script>
+		window.onload = function()
+		{
+			var aSet1 = document.getElementById('tored');
+			var aSet2 = document.getElementById('togreen');
+			var aSet3 = document.getElementById('toblue');
+
+				aSet1.onclick = function()
+				{
+					setColor('red');
+				};
+
+				aSet2.onclick = function()
+				{
+					setColor('green');
+				};
+
+				aSet3.onclick = function()
+				{
+					setColor('blue');
+				};
+				
+				function setColor(color)
+				{
+						var oDiv = document.getElementById('div1');
+						var aDiv = oDiv.getElementsByTagName('div');
+					for(var i=0;i<aDiv.length;i++)
+					{
+						aDiv[i].style.background= color;
+					}
+				}
+				
+
+			var oBtn = document.getElementById('btn1');
+
+				oBtn.onclick = function(){
+					var oDiv = document.getElementById('div2');
+					var oChe = oDiv.getElementsByTagName('input');
+					for( var i=0;i<oChe.length;i++)
+					{
+						if(oChe[i].checked==true)
+						{
+							oChe[i].checked=false;
+						}
+						else
+						{
+							oChe[i].checked=true
+						}
+					}
+				};
+
+			var oBtn2 = document.getElementById('btn2');
+				oBtn2.onclick = function()
+				{
+					for(var i=0;i<5;i++)
+					{
+						if(i==2)
+						{
+							break;
+						}
+						alert(i);
+					}
+				};
+
+
+			var oBtn3 = document.getElementById('btn3');
+				oBtn3.onclick = function()
+				{
+					for(var i=0;i<5;i++)
+					{
+						if(i==3)
+						{
+							continue;
+						}
+						alert(i);
+					}
+				};
+
+			var oBtn4 = document.getElementById('btn4');
+				oBtn4.onclick = function()
+				{
+					var arr = [12,34,55];
+					for(var i in arr)
+					{
+						alert('第'+i+'个值：'+arr[i]);
+					}
+				};
+
+			var oBtn5 = document.getElementById('btn5');
+				oBtn5.onclick = function()
+				{
+					var josn = { a:12,b:15,c:73 };
+					for(var i in josn)
+					{
+						alert('第'+i+'个值：'+josn[i]);
+					}
+				};
+
+		}
+	</script>
+	
+	<body>
+		<input type="button" id="tored" value="变红" style="float:left"/>
+		<input type="button" id="togreen" value="变绿" style="float:left"/>
+		<input type="button" id="toblue" value="变蓝"  style="float:left"/>
+		<div id="div1" style="clear:both" >
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<br>
+		<input type="button" id="btn1" value="全选" style="clear:both" />
+	
+		<div id="div2">
+			<input type="checkbox" />
+			<input type="checkbox" />
+			<input type="checkbox" />
+			<input type="checkbox" />
+			<input type="checkbox" />
+			<input type="checkbox" />
+			<input type="checkbox" />
+			<input type="checkbox" />
+
+
+			<input type="button" id="btn2" value="循环终止" />
+			<input type="button" id="btn3" value="循环跳过" />
+			<input type="button" id="btn4" value="循环varIn" />
+			<input type="button" id="btn5" value="循环josn" />
+		</div>
+	</body>
+</html>

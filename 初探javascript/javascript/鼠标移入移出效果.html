@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		#div1 { width:200px; height:200px; background:#CCC; border:1px solid #999; display:none; }
+		#div2 { width:100px; height:100px; background:red; }
+	</style>
+	<script>
+		window.onload = function()
+		{
+			var oBtn = document.getElementById('btn1');
+			oBtn.onmouseover = function() 
+				{
+				var oDiv = document.getElementById('div1');
+				oDiv.style.display='block';
+				};
+		
+			oBtn.onmouseout = function()
+				{
+				var oDiv = document.getElementById('div1');
+				oDiv.style.display='none';
+				}
+	
+			var oBtn = document.getElementById('div2');
+			oBtn.onmouseover = function()
+				{
+				var oDiv = document.getElementById('div2');
+				oDiv.style.width='300px';
+				oDiv.style.height='300px';
+				oDiv.style.background='green';
+				}
+		
+			oBtn.onmouseout = function()
+				{
+				var oDiv = document.getElementById('div2');
+				oDiv.style.width='100px';
+				oDiv.style.height='100px';
+				oDiv.style.background='red';
+				}	
+		};
+	</script>
+	
+	<body>
+		<input id="btn1" type="checkbox" />
+		<div id="div1">你好啊！</div>
+		<br>
+		<div id="div2"></div>
+	</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link id="l1" href="../css/皮肤1.css" type="text/css" rel="stylesheet" />
+	</head>
+	<script>
+	
+		window.onload = function()
+		{
+			var oBtn = document.getElementById('btn1');
+			oBtn.onclick = function()
+				{
+				var oL1 = document.getElementById('l1');
+				oL1.href ='css/皮肤1.css';
+				};
+		
+			var oBtn = document.getElementById('btn2');
+			oBtn.onclick = function()
+				{
+				var oL1 = document.getElementById('l1');
+				oL1.href ="css/皮肤2.css";
+				};
+		
+			var oSet = document.getElementById('set');
+			oSet.onclick = function()
+			{
+				var oTex = document.getElementById('tex1');
+				oTex.value = 'sdadasad';
+			};
+		
+			var oShe = document.getElementById('she');
+			oShe.onclick = function()
+			{
+				var oDiv = document.getElementById('div1');
+				if(oDiv.style.display =='block')
+				{
+					oDiv.style.display ='none';
+				}
+				else
+				{
+					oDiv.style.display ='block';
+				}
+			};
+			
+			var oTog = document.getElementById('tog');
+			oTog.onclick = function()
+			{
+				var oDiv = document.getElementById('div2');
+				oDiv.className='box';
+			};
+		};
+	
+	
+	</script>
+	
+	<body>
+		<input type="button" value="皮肤1" id="btn1" />
+		<input type="button" value="皮肤2" id="btn2"  />
+		<input type="text" id="tex1"/>
+		<input type="button" value="改文字" id="set" />
+		<input type="button" value="隐藏消失" id="she" />
+		<div id="div1"></div>
+		
+		<input type="button" value="变蓝" id="tog" />
+		<div id="div2"></div>
+	</body>
+</html>

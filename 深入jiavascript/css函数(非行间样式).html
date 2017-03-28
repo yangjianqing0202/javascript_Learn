@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		#div1 { width:300px; height:300px; background:red;}
+	</style>
+	<script>
+		function getStyle(obj, name)
+		{
+			if(obj.currentStyle)
+			{
+				return obj.currentStyle[name];
+			}
+			else
+			{
+				return getComputedStyle(obj, false)[name];
+			}
+		}
+		
+		window.onload = function()
+		{
+			var oDiv = document.getElementById('div1');
+			alert(getStyle(oDiv, 'backgroundColor'));
+		};
+		
+		
+	</script>
+	
+	<body>
+		<div id="div1"></div>
+	</body>
+</html>
