@@ -1,28 +1,52 @@
-
-
+var g_aWeekName=
+    [
+        "one",
+        "two",
+        "three",
+        "four",
+        "five",
+        "six",
+        "seven"
+    ];
 
 window.onload = function()
 {
-    var oDiv1 = document.getElementById('time');
-    var aImg1 = oDiv1.getElementsByTagName('img');
-    var oImg2 = document.getElementsByTagName('week');
+    var oDiv = document.getElementById('time');
+    var aImg = oDiv.getElementsByTagName('img');
+
+    var oDiv2 = document.getElementById('xingqi')
+    var aImg2 = oDiv2.getElementsByTagName('img');
+
         function tick()
         {
             var oDate = new Date;
-            var str1 = toDou(oDate.getHours()) + toDou(oDate.getMinutes()) + toDou(oDate.getSeconds());
+            var iYear=oDate.getYear();
+            var iMonth=oDate.getMonth();
+            var iDay=oDate.getDate();
+            var iHour=oDate.getHours();
+            var iMin=oDate.getMinutes();
+            var iSec=oDate.getSeconds();
+            var iWeek=(oDate.getDay()+6)%7;
 
-            var iWeek=(oDate.getDay()+6)%7;//星期
-            var week_name= ["one", "two", "three", "four", "five", "six", "seven"];
 
-            for (var i=0;i<aImg1.length;i++)
+            if(iYear<1900)
             {
-                aImg1[i].src = 'images/'+str1.charAt(i)+'.png';
-            }
-            for (var i=0;i<oImg2.length;i++)
-            {
-                oImg2[i].src='images/'+week_name[iWeek]+'.png';
+                iYear+=1900;
             }
 
+            var str = (iYear)+toDouble(iMonth+1)+toDouble(iDay)+toDouble(iHour)+toDouble(iMin)+toDouble(iSec);
+            var str2 =  ''+iWeek;
+
+
+            for (var i=0;i<aImg.length;i++)
+            {
+                aImg[i].src='images/'+ str.charAt(i)+'.png';
+            }
+
+            for (var i=0;i<aImg2.length;i++)
+            {
+                aImg2[i].src='images/'+ g_aWeekName[str2.charAt(i)]+'.png';
+            }
 
         }
         setInterval(tick,1000);
@@ -31,14 +55,14 @@ window.onload = function()
 };
 
 
-function toDou (n)
+function toDouble(n)
 {
     if(n<10)
     {
-        return '0'+ n
+        return '0'+n;
     }
     else
     {
-        return '' + n
+        return ''+n;
     }
 }
