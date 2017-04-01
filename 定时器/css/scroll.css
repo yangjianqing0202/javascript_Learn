@@ -1,0 +1,32 @@
+html { margin:0; padding:0; height:100%; }
+body { margin:0; padding:0; height:100%; }
+img { margin:0; padding:0; border:none;}
+a { margin:0; padding:0; text-decoration:none;}
+ul { margin:0; padding:0; }
+li { margin:0; padding:0; list-style: none; }
+
+
+
+
+.roll { width:880px; height: 108px; margin:50px auto 0;  position:relative;}
+.roll .btn_left { display: block; width: 68px; height: 68px; background:url(../img2/btn.jpg) no-repeat -70px -69px; position:absolute; top:20px; left:1px; z-index:1 }
+.roll .btn_right { display: block; width: 68px; height: 68px; background:url(../img2/btn.jpg) no-repeat 1px -69px;; position:absolute; top:20px; right:0; z-index:1 }
+.roll .btn_left:hover { background: url(../img2/btn.jpg) no-repeat -70px 0; }
+.roll .btn_right:hover { background: url(../img2/btn.jpg) no-repeat 1px 0; }
+
+.wrap { width: 728px; height: 108px; margin: 0 auto; position:relative;overflow:hidden; }
+.wrap ul { position:absolute; top:0; left:0;  }
+.wrap li { float:left; width: 182px; height: 108px; text-align: center; }
+.wrap li a:hover { position: relative; top: 2px; }
+
+
+
+
+
+
+
+
+
+
+
+

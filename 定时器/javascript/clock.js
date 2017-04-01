@@ -11,10 +11,10 @@ var g_aWeekName=
 
 window.onload = function()
 {
-    var oDiv = document.getElementById('time');
+    var oDiv = document.getElementById('date');
     var aImg = oDiv.getElementsByTagName('img');
 
-    var oDiv2 = document.getElementById('xingqi')
+    var oDiv2 = document.getElementById('week');
     var aImg2 = oDiv2.getElementsByTagName('img');
 
         function tick()
@@ -34,7 +34,7 @@ window.onload = function()
                 iYear+=1900;
             }
 
-            var str = (iYear)+toDouble(iMonth+1)+toDouble(iDay)+toDouble(iHour)+toDouble(iMin)+toDouble(iSec);
+            var str = iYear+toDouble(iMonth+1)+toDouble(iDay)+toDouble(iHour)+toDouble(iMin)+toDouble(iSec);
             var str2 =  ''+iWeek;
 
 
