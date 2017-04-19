@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    #div1 { width:200px; height:200px; background:#ccc; margin:150px; position:relative; }
+    #div2 { width:100px; height:100px; background:red; position:absolute; top:100px; left:100px; }
+</style>
+<script>
+    window.onload = function()
+    {
+        var oUl1 = document.getElementById('ul1');
+        var aA = oUl1.getElementsByTagName('a');
+
+        for (var i=0; i<aA.length; i++)
+        {
+            aA[i].onclick = function()
+            {
+                this.parentNode.style.display = 'none';
+            }
+        }
+
+        var oDiv2 = document.getElementById('div2');
+        console.log( oDiv2.offsetParent );
+
+    }
+</script>
+<body>
+<ul id="ul1">
+    <li>第1个<a href="#">隐藏</a></li>
+    <li>第2个<a href="#">隐藏</a></li>
+    <li>第3个<a href="#">隐藏</a></li>
+    <li>第4个<a href="#">隐藏</a></li>
+</ul>
+<div id="div1">
+    <div id="div2"></div>
+</div>
+
+</body>
+</html>

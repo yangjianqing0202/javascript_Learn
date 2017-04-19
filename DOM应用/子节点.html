@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script>
+
+
+    window.onload = function()
+    {
+        /*全部子节点，childNodes*/
+        var oUl1 = document.getElementById('ul1');
+        for (var i=0; i<oUl1.childNodes.length; i++)
+        {
+            if(oUl1.childNodes[i].nodeType == 1)
+            {
+                oUl1.childNodes[i].style.background = 'red';
+            }
+        }
+
+        /*全部子节点，children*/
+        var oUl2 = document.getElementById('ul2');
+        for (var i=0; i<oUl2.children.length; i++)
+        {
+            oUl2.children[i].style.background = 'blue';
+        }
+
+        /*首位子节点，firstChild（低版本浏览器）、firstElementChild（高版本浏览器）*/
+        var oUl3 = document.getElementById('ul3');
+        if ( oUl3.firstElementChild )
+        {
+            oUl3.firstElementChild.style.background ='green';
+        }
+        else
+        {
+            oUl3.firstChild.style.background = 'green';
+        }
+
+        /*末位子节点，lastChild（低版本浏览器）、lastElementChild（高版本浏览器）*/
+        if ( oUl3.lastElementChild )
+        {
+            oUl3.lastElementChild.style.background = 'yellow';
+        }
+        else
+        {
+            oUl3.lastChild.style.background = 'yellow';
+        }
+
+    }
+</script>
+<body>
+<ul id="ul1">
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+<ul id="ul2">
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+<ul id="ul3">
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+
+
+</body>
+</html>

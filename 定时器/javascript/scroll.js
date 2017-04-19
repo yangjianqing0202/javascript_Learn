@@ -1,5 +1,5 @@
-var speed = -2;
-
+var timer = null;
+var g_iSpeed = 2;
 
 window.onload = function()
 {
@@ -8,59 +8,88 @@ window.onload = function()
     var aLi = oUl.getElementsByTagName('li');
     var oBtn1 = document.getElementById('btn_left');
     var oBtn2 = document.getElementById('btn_right');
-    var oSpeed=document.getElementById('sel_speed');
-
-
-
-
-    oSpeed.onchange=function ()
-    {
-
-    };
-
+    var oSpeed = document.getElementById('sel_speed');
+    oUl.innerHTML += oUl.innerHTML;
+    oUl.style.width = aLi[0].offsetWidth * aLi.length+'px';
 
     oBtn1.onmouseover = function()
     {
-       speed =  -2;
+        startMove(true);
     };
 
     oBtn2.onmouseover = function()
     {
-        speed = 2;
+        startMove(false);
+    };
+    startMove(true);
+
+    oSpeed.onchange=function ()
+    {
+        g_iSpeed = parseInt(this.value);
     };
 
+    for (var i=0; i<aLi.length; i++)
+    {
+        aLi[i].onmouseover = function()
+        {
+            stopMove();
+        };
+
+        aLi[i].onmouseout = function()
+        {
+            startMove(g_bMoveLeft);
+        }
+    }
 
 
+    function startMove (left)
+    {
+        g_bMoveLeft = left;
+        if (timer)
+        {
+            clearInterval(timer);
+        }
+        timer = setInterval(move, 30);
+    }
 
-    oUl.innerHTML += oUl.innerHTML;
-    oUl.style.width = aLi[0].offsetWidth * aLi.length+'px';
+    function stopMove()
+    {
+        clearInterval(timer);
+        timer = null;
+    }
+
 
     function move()
     {
-        if(oUl.offsetLeft < -oUl.offsetWidth/2)
+        var oDiv = document.getElementById('roll');
+        var oUl = oDiv.getElementsByTagName('ul')[0];
+
+
+        var l = oUl.offsetLeft;
+
+        if(g_bMoveLeft)
         {
-            oUl.style.left = '0';
+            l-=g_iSpeed;
+            if(l<=-oUl.offsetWidth/2)
+            {
+                l+=oUl.offsetWidth/2;
+            }
+        }
+        else
+        {
+            l+=g_iSpeed;
+            if(l>=0)
+            {
+                l-=oUl.offsetWidth/2;
+            }
         }
 
-        if(oUl.offsetLeft>0)
-        {
-            oUl.style.left = -oUl.offsetWidth/2 + 'px';
-        }
-
-        oUl.style.left = oUl.offsetLeft + speed + 'px';
+        oUl.style.left=l+'px';
     }
 
 
-    var timer = setInterval(move, 30);
-    oUl.onmouseover = function()
-    {
-        clearInterval(timer);
-    };
 
-    oUl.onmouseout = function()
-    {
-        timer = setInterval(move, 30);
-    }
+
 
 
 };

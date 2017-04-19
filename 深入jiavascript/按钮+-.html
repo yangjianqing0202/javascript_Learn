@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script>
+
+    window.onload = function()
+    {
+        var oBtn1 = document.getElementById('btn1');
+        var oBtn2 = document.getElementById('btn2');
+        var oTxt = document.getElementById('txt');
+
+        oBtn1.onclick = function()
+        {
+           var n1 = parseFloat(oTxt.value);
+            oTxt.value = n1 + 1;
+        };
+
+        oBtn2.onclick = function()
+        {
+            if (oTxt.value>0)
+            {
+                oTxt.value -= 1;
+            }
+        };
+
+    }
+</script>
+<body>
+<input id="btn1" type="button" value="+" />
+<input id="btn2" type="button" value="-" />
+<input id="txt" type="text" value="0"/>
+</body>
+</html>

@@ -6,7 +6,8 @@ ul { margin:0; padding:0; }
 li { margin:0; padding:0; list-style: none; }
 
 
-
+.contorl { width:100%; height: auto;  }
+.sel_speed { width:880px; margin:0 auto; }
 
 .roll { width:880px; height: 108px; margin:50px auto 0;  position:relative;}
 .roll .btn_left { display: block; width: 68px; height: 68px; background:url(../img2/btn.jpg) no-repeat -70px -69px; position:absolute; top:20px; left:1px; z-index:1 }

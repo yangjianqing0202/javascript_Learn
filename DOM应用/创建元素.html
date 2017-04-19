@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script>
+    window.onload = function()
+    {
+        var oBtn1 = document.getElementById('btn1');
+        var oBtn2 = document.getElementById("btn2");
+        var oUl = document.getElementById('ul');
+        var aLi = document.getElementsByTagName('li');
+        var oTxt = document.getElementById('txt');
+        var aA = document.getElementsByTagName('a');
+
+        oBtn1.onclick = function()
+        {
+            var oLi = document.createElement('li');
+            oUl.appendChild(oLi);
+            oLi.innerHTML = oTxt.value +  "<a href=#>点击删除</a>";
+
+            for (var i=0; i<aA.length; i++)
+            {
+                aA[i].onclick = function()
+                {
+                    oUl.removeChild (this.parentNode);
+                }
+            }
+        };
+
+        oBtn2.onclick = function()
+        {
+            var oLi = document.createElement('li');
+            oLi.innerHTML = oTxt.value + "<a href=#>点击删除</a>";
+
+            if(aLi.length>0)
+            {
+                oUl.insertBefore(oLi,aLi[0]);
+            }
+            else
+            {
+                oUl.appendChild(oLi);
+            }
+             console.log( aLi.length );
+
+            for (var i=0; i<aA.length; i++)
+            {
+                aA[i].onclick = function()
+                {
+                    oUl.removeChild (this.parentNode);
+                }
+            }
+        };
+    }
+</script>
+<body>
+<input id="btn1" type="button" value="按钮(第1行之后创建)" />
+<input id="btn2" type="button" value="按钮(第1行之前创建)" />
+<input id="txt" type="text" style="display:block" />
+<ul id="ul">
+
+</ul>
+</body>
+</html>
