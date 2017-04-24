@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    html { margin:0; padding:0; height:100%; }
+    body { margin:0; padding:0; height:100%; }
+    img { margin:0; padding:0; border:none;}
+    a { margin:0; padding:0; text-decoration:none;}
+    ul { margin:0; padding:0; }
+    li { margin:0; padding:0; list-style: none; }
+    .contorl { width:100%; height: auto;  }
+    .sel_speed { width:880px; margin:0 auto; }
+    .roll { width:880px; height: 108px; margin:50px auto 0;  position:relative;}
+    .roll .btn_left { display: block; width: 68px; height: 68px; background:url(图片滚动/img2/btn.jpg) no-repeat -70px -69px; position:absolute; top:20px; left:1px; z-index:1 }
+    .roll .btn_right { display: block; width: 68px; height: 68px; background:url(图片滚动/img2/btn.jpg) no-repeat 1px -69px;; position:absolute; top:20px; right:0; z-index:1 }
+    .roll .btn_left:hover { background: url(图片滚动/img2/btn.jpg) no-repeat -70px 0; }
+    .roll .btn_right:hover { background: url(图片滚动/img2/btn.jpg) no-repeat 1px 0; }
+
+    .wrap { width: 728px; height: 108px; margin: 0 auto; position:relative; overflow:hidden; }
+    .wrap ul { position:absolute; top:0; left:0;  }
+    .wrap li { float:left; width: 182px; height: 108px; text-align: center; }
+    .wrap li a:hover { position: relative; top: 2px; }
+</style>
+<script>
+    var speed = 2;
+    var timer = null;
+
+    window.onload = function()
+    {
+        var oSpeed = document.getElementById('sel_speed');
+        var oSpeed2 = document.getElementById('sel_speed2');
+        var oBtn1 = document.getElementById('btn_left');
+        var oBtn2 = document.getElementById('btn_right');
+        var oDiv = document.getElementById('roll');
+        var oUl = oDiv.getElementsByTagName('ul')[0];
+        var aLi = oUl.getElementsByTagName('li');
+        oUl.innerHTML += oUl.innerHTML;
+        oUl.style.width = aLi[0].offsetWidth * aLi.length + "px";
+
+        oSpeed2.onchange = function()
+        {
+            speed = parseFloat(this.value);
+            oSpeed.value = speed;
+            console.log(speed);
+        };
+
+        oBtn1.onclick = function()
+        {
+            if ( speed > 1 )
+            {
+                speed -= 1;
+            }
+            oSpeed.value = oSpeed2.value = speed;
+            console.log(speed);
+        };
+
+        oBtn2.onclick = function()
+        {
+            speed += 1;
+            oSpeed.value = oSpeed2.value = speed;
+            console.log(speed);
+        };
+
+        oBtn1.onmouseover = function()
+        {
+            startMove(true)
+        };
+
+        oBtn2.onmouseover = function()
+        {
+            startMove(false)
+        };
+        startMove(true);
+
+        for (var i=0; i<aLi.length; i++)
+        {
+            aLi[i].onmouseover = function()
+            {
+                stopMove()
+            };
+
+            aLi[i].onmouseout = function()
+            {
+                startMove(go)
+            };
+        }
+
+        function startMove(lmove)
+        {
+            go = lmove;
+            if (timer)
+            {
+                clearInterval(timer)
+            }
+            timer = setInterval(move,30);
+        }
+
+        function stopMove()
+        {
+            clearInterval(timer);
+            timer = null;
+        }
+
+        function move()
+        {
+            var oDiv = document.getElementById('roll');
+            var oUl = oDiv.getElementsByTagName('ul')[0];
+            var l = oUl.offsetLeft;
+
+            if(go)
+            {
+                l -= speed;
+                if( l<= -oUl.offsetWidth/2 )
+                {
+                    l += oUl.offsetWidth/2;
+                }
+            }
+            else
+            {
+                l += speed;
+                if(l>=0)
+                {
+                    l -= oUl.offsetWidth/2;
+                }
+            }
+            oUl.style.left = l + 'px';
+        }
+    }
+
+</script>
+<body>
+<div class="contorl">
+    <div class="sel_speed">
+        <span>滚动速度：</span>
+        <input id="sel_speed" type="text" value="2" />
+        <select id="sel_speed2">
+            <option value="2">慢</option>
+            <option value="5">中</option>
+            <option value="10">快</option>
+        </select>
+    </div>
+</div>
+<div class="roll" id="roll">
+    <a href="javascript:void(0)" class="btn_left" id="btn_left"></a>
+    <a href="javascript:void(0)" class="btn_right" id="btn_right"></a>
+    <div class="wrap">
+        <ul>
+            <li><a href="#"><img src="图片滚动/img2/1.jpg" /></a></li>
+            <li><a href="#"><img src="图片滚动/img2/2.jpg" /></a></li>
+            <li><a href="#"><img src="图片滚动/img2/3.jpg" /></a></li>
+            <li><a href="#"><img src="图片滚动/img2/4.jpg" /></a></li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>

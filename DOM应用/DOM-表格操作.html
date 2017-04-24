@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    table tr:nth-child(even){ background: #A8A8A8; }
+</style>
+<script>
+    window.onload = function ()
+    {
+        var oTab = document.getElementById('tab1');
+        var oBtn1 = document.getElementById('btn1');
+        var oBtn2 = document.getElementById('btn2');
+        var oName = document.getElementById('name');
+        var oAge = document.getElementById('age');
+        var Id = oTab.tBodies[0].rows.length + 1;
+        var oldColor = '';
+        console.log(oTab.tBodies[0].rows[1].cells[1].innerHTML);
+
+        /*添加删除*/
+        oBtn1.onclick = function()
+        {
+            var oTr = document.createElement('tr');
+            var oTd = document.createElement('td');
+            oTr.appendChild(oTd);
+            oTd.innerHTML = Id++;
+
+            var oTd = document.createElement('td');
+            oTr.appendChild(oTd);
+            oTd.innerHTML = oName.value;
+
+            var oTd = document.createElement('td');
+            oTr.appendChild(oTd);
+            oTd.innerHTML = oAge.value;
+
+            var oTd = document.createElement('td');
+            oTr.appendChild(oTd);
+            oTd.innerHTML = "<a href='#'>删除</a>";
+
+            oTd.getElementsByTagName('a')[0].onclick = function ()
+            {
+                oTab.tBodies[0].removeChild(this.parentNode.parentNode);
+            };
+            oTab.tBodies[0].appendChild(oTr);
+
+            /*隔行变色*/
+            for (var i=0; i<oTab.tBodies[0].rows.length; i++)
+            {
+                oTab.tBodies[0].rows[i].onmouseover = function()
+                {
+                    oldColor = this.style.background;
+                    this.style.background = 'red';
+                };
+
+                oTab.tBodies[0].rows[i].onmouseout = function()
+                {
+                    this.style.background = oldColor;
+                };
+
+                if ( i%2 )
+                {
+                    oTab.tBodies[0].rows[i].style.background = '#A8A8A8';
+                }
+                else
+                {
+                    oTab.tBodies[0].rows[i].style.background = '';
+                }
+            }
+        };
+
+        /*隔行变色*/
+        for (var i=0; i<oTab.tBodies[0].rows.length; i++)
+        {
+            oTab.tBodies[0].rows[i].onmouseover = function()
+            {
+                oldColor = this.style.background;
+                this.style.background = 'red';
+            };
+
+            oTab.tBodies[0].rows[i].onmouseout = function()
+            {
+                this.style.background = oldColor;
+            };
+
+            if ( i%2 )
+            {
+                oTab.tBodies[0].rows[i].style.background = '#A8A8A8';
+            }
+            else
+            {
+                oTab.tBodies[0].rows[i].style.background = '';
+            }
+        }
+
+        /*模糊搜索*/
+        oBtn2.onclick = function()
+        {
+            for (var i=0; i<oTab.tBodies[0].rows.length; i++)
+            {
+                var sTab = oTab.tBodies[0].rows[i].cells[1].innerHTML.toLowerCase();
+                var sName = oName.value.toLowerCase();
+                var arr = sName.split(' ');
+                oTab.tBodies[0].rows[i].style.background = "";
+
+                for (var i=0; i<arr.length; i++)
+                {
+                    if (sTab.search(arr[i])!= -1)
+                    {
+                        oTab.tBodies[0].rows[i].style.background = 'yellow';
+                    }
+                }
+            }
+        }
+    }
+</script>
+
+<body>
+姓名：<input type="text" id="name" />
+年龄：<input type="text" id="age" />
+<input type="button" id="btn1" value="添加" />
+<input type="button" id="btn2" value="搜索" />
+<br />
+<br />
+
+<table id="tab1" width="300" style="text-align:center" border="1">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>WXM</td>
+            <td>21</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>李小红</td>
+            <td>24</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>zhanxiaoyu</td>
+            <td>20</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>赵小田</td>
+            <td>25</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>钱小桐</td>
+            <td>26</td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+</body>
+</html>
