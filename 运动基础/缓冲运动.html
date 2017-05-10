@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    #div1 { width:100px; height:100px; background:red; position:absolute; top:50px; left:900px; }
+    #div2 { width:1px; height:300px; background:black; position:absolute; top:0; left:400px; }
+    #div3 { width:1px; height:300px; background:black; position:absolute; top:0; left:700px; }
+</style>
+<script>
+    window.onload = function ()
+    {
+        var oBtn1 = document.getElementById('btn1');
+        var oBtn2 = document.getElementById('btn2');
+        var oDiv = document.getElementById('div1');
+        oBtn1.onclick = function ()
+        {
+            startMove (400);
+        };
+        oBtn2.onclick = function ()
+        {
+            startMove (700);
+        };
+    };
+
+    var timer = null;
+    function startMove (iTarget)
+    {
+        clearInterval (timer);
+        var oDiv = document.getElementById('div1');
+       timer = setInterval(function(){
+           var speed = 0;
+            speed = (iTarget - oDiv.offsetLeft)/10;
+            speed = speed>0?Math.ceil(speed):Math.floor(speed);
+           if ( iTarget == oDiv.offsetLeft )
+           {
+               clearInterval (timer);
+           }
+           else
+           {
+               oDiv.style.left = oDiv.offsetLeft + speed + 'px';
+           }
+        },30);
+    }
+
+</script>
+<body>
+<input id="btn1" type="button" value="运动到400" />
+<input id="btn2" type="button" value="运动到700" />
+<div id="div1"></div>
+<div id="div2"></div>
+<div id="div3"></div>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    #div1 { width:100px; height:50px; background:red; position:absolute; top:100px; left:30px; border:1px solid black; }
+    #div2 { width:100px; height:50px; background:red; position:absolute; top:200px; left:30px; border:1px solid black; }
+    #div3 { width:100px; height:50px; background:red; position:absolute; top:300px; left:30px; border:1px solid black; }
+    #div4 { width:100px; height:50px; background:red; position:absolute; top:400px; left:30px; border:1px solid black; }
+    #div5 { width:100px; height:50px; background:red; position:absolute; top:500px; left:30px; border:1px solid black; opacity:0.3; filter:alpha(opacity:30);}
+</style>
+<script>
+    window.onload = function ()
+    {
+        var oBtn1 = document.getElementById('btn1');
+        var oBtn2 = document.getElementById('btn2');
+        var oDiv1 = document.getElementById('div1');
+        var oDiv2 = document.getElementById('div2');
+        var oDiv3 = document.getElementById('div3');
+        var oDiv4 = document.getElementById('div4');
+        var oDiv5 = document.getElementById('div5');
+
+        oDiv2.onmouseover = function ()
+        {
+            startMove (this, 'width', 400)
+        };
+        oDiv2.onmouseout = function ()
+        {
+            startMove (this, 'width', 100)
+        };
+        oDiv3.onmouseover = function ()
+        {
+            startMove (this, 'height', 400)
+        };
+        oDiv3.onmouseout = function ()
+        {
+            startMove (this, 'height', 50)
+        };
+        oDiv4.onmouseover = function ()
+        {
+            startMove (this, 'borderWidth', 50)
+        };
+        oDiv4.onmouseout = function ()
+        {
+            startMove (this, 'borderWidth', 1)
+        };
+        oDiv5.onmouseover = function ()
+        {
+            startMove (this, 'opacity', 100)
+        };
+        oDiv5.onmouseout = function ()
+        {
+            startMove (this, 'opacity', 30)
+        };
+        oBtn1.onclick = function ()
+        {
+            startMove (oDiv1, 'left', 400);
+        };
+        oBtn2.onclick = function ()
+        {
+            startMove (oDiv1, 'left', 30);
+        };
+    };
+
+    function getStyle (obj, name)
+    {
+        if (obj.currentStyle)
+        {
+            return obj.currentStyle[name];
+        }
+        else
+        {
+            return getComputedStyle(obj,false)[name];
+        }
+    }
+
+    function startMove (obj, attr, itarget)
+    {
+        var oDiv = document.getElementsByTagName ('div');
+        clearInterval (obj.timer);
+        obj.timer = setInterval (function (){
+            var cur = 0;
+            if (attr == 'opacity')
+            {
+               cur = Math.round (parseFloat (getStyle (obj,attr))*100);
+            }
+            else
+            {
+               cur = parseInt (getStyle (obj,attr));
+            }
+            var speed = (itarget - cur)/10;
+            speed = speed>0?Math.ceil(speed):Math.floor(speed);
+            if (itarget == cur)
+            {
+                clearInterval (obj.timer)
+            }
+            else
+            {
+                if (attr == 'opacity')
+                {
+                    obj.style.filter = 'alpha(opacity:'+(cur + speed)+')';
+                    obj.style.opacity = (cur + speed)/100;
+                }
+                else
+                {
+                    obj.style[attr] = cur + speed + 'px';
+                }
+            }
+        },30)
+    }
+</script>
+<body style="height:1200px;">
+    <input id="btn1" type="button" value="移动" />
+    <input id="btn2" type="button" value="还原" />
+    <div id="div1"></div>
+    <div id="div2"></div>
+    <div id="div3"></div>
+    <div id="div4"></div>
+    <div id="div5"></div>
+</body>
+</html>

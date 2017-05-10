@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script>
+    window.onload = function()
+    {
+        var oDiv1 = document.getElementById('div1');
+        var oDiv2 = document.getElementById('div2');
+        oDiv1.onmouseover = function()
+        {
+            startMove (0)
+        };
+        oDiv1.onmouseout = function()
+        {
+            startMove (-150)
+        };
+        oDiv2.onmouseover = function()
+        {
+            bufferMove (0)
+        };
+        oDiv2.onmouseout = function()
+        {
+            bufferMove (-150)
+        };
+
+    };
+
+        var timer = null;
+        var timer2 = null;
+    function startMove (iTarget)
+    {
+        clearInterval(timer);
+        timer = setInterval(function(){
+            var oDiv1 = document.getElementById('div1');
+            var speed = 0;
+            var l = oDiv1.offsetLeft;
+            if ( l < iTarget )
+            {
+                speed = 10;
+            }
+            else
+            {
+                speed = -10;
+            }
+            if ( l == iTarget )
+            {
+                clearInterval(timer);
+            }
+            else
+            {
+                oDiv1.style.left = l + speed + 'px';
+            }
+        },30 );
+    }
+
+    function bufferMove (iTarget)
+    {
+        clearInterval (timer2);
+        timer2 = setInterval (function(){
+            var oDiv2 = document.getElementById('div2');
+            var speed = (iTarget - oDiv2.offsetLeft)/10 ;
+            speed = speed>0?Math.ceil(speed):Math.floor(speed);
+
+            if ( iTarget == oDiv2.offsetLeft )
+            {
+                clearInterval (timer2);
+            }
+            else
+            {
+                oDiv2.style.left = oDiv2.offsetLeft + speed + 'px'
+            }
+        },30);
+    }
+
+
+</script>
+<style>
+    html { margin:0; padding:0; }
+    body { margin:0; padding:0; }
+    #div1 { position:absolute; left:-150px; background: blue; width:150px; height:200px; }
+    #div1 span { position:absolute; top:50%; right:-20px;background: green; width:20px; height:60px; line-height:20px; text-align:center;
+                 -webkit-transform: translate(0,-50%);
+                 -moz-transform:translate(0, -50%);
+                 -ms-transform:translate(0, -50%);
+                 -o-transform:translate(0, -50%);
+                 transform:translate(0, -50%);}
+
+    #div2 { position:absolute;top:350px; left:-150px; background: blue; width:150px; height:200px; }
+    #div2 span { position:absolute; top:50%; right:-20px;background: green; width:20px; height:60px; line-height:20px; text-align:center;
+        -webkit-transform: translate(0,-50%);
+        -moz-transform:translate(0, -50%);
+        -ms-transform:translate(0, -50%);
+        -o-transform:translate(0, -50%);
+        transform:translate(0, -50%);}
+
+</style>
+<body>
+<div id="div1">
+    <span>分享到</span>
+</div>
+<div id="div2">
+    <span>分享去</span>
+</div>
+
+</body>
+</html>
