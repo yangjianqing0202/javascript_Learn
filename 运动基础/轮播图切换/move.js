@@ -31,8 +31,6 @@ function startMove (obj, json, fnEnd)
 
 			if(cur!=json[attr])
 				bStop=false;
-
-
 			if (attr == 'opacity')
 			{   /*隐身显示运动框架*/
 				obj.style.filter = 'alpha(opacity:'+(cur + speed)+')';
@@ -47,10 +45,8 @@ function startMove (obj, json, fnEnd)
 		if(bStop)
 		{
 			clearInterval(obj.timer);
-
 			if(fnEnd)fnEnd();
 		}
-
 	},30)
 }
 
@@ -58,7 +54,6 @@ function getByClass (oParent, sClass)/*获取class元素*/
 {
 	var aEle = document.getElementsByTagName('*');
 	var aResult = [];
-
 	for (var i=0; i<aEle.length; i++)
 	{
 		if (aEle[i].className == sClass)

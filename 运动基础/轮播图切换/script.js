@@ -121,7 +121,7 @@ window.onload = function ()
         console.log(now)
     };
 
-    var timer = setInterval(oBtnNext.onclick,2000);
+    var timer = setInterval(oBtnNext.onclick,5000);
 
     oDiv.onmouseover = function ()
     {
@@ -129,6 +129,6 @@ window.onload = function ()
     };
     oDiv.onmouseout = function ()
     {
-        timer = setInterval(oBtnNext.onclick,2000);
+        timer = setInterval(oBtnNext.onclick,5000);
     }
 };
